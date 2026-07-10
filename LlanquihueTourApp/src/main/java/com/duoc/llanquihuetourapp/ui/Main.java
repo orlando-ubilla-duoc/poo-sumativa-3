@@ -25,7 +25,7 @@ public class Main {
 		GestorEntidades gestorEntidades = new GestorEntidades();
 
 		SwingUtilities.invokeLater(() -> {
-			VistaMenu sumativa3 = new VistaMenu();
+			VistaMenu sumativa3 = new VistaMenu( gestorEntidades, "Llanquihue-Tour App");
 		});
 
 	}

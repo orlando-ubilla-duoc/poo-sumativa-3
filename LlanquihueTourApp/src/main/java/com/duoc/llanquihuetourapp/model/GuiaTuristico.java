@@ -7,24 +7,21 @@ package com.duoc.llanquihuetourapp.model;
  */
 public class GuiaTuristico extends Persona implements Registrable {
 
-	private String especialidad;
+	private String nombreAgencia;
 
-	public GuiaTuristico(String nombre, String email, String telefono, String direccion, Rut rut, String especialidad) {
+	public GuiaTuristico(String nombre, String email, String telefono, String direccion, Rut rut, String agencia) {
 		super(nombre, email, telefono, direccion, rut);
-		this.especialidad = especialidad;
+		this.nombreAgencia = agencia;
 	}
 
-	public String getEspecialidad() {
-		return especialidad;
-	}
+	public String getAgencia() { return nombreAgencia;}
 
-	public void setEspecialidad(String especialidad) {
-		this.especialidad = especialidad;
-	}
+	public void setAgencia(String dato) { this.nombreAgencia = dato;}
 
 	@Override
 	public void mostrarResumen() {
 		System.out.println("=== INFORMACIÓN DEL GUÍA TURÍSTICO ===");
-		System.out.println("Especialidad: " + this.getEspecialidad());
+		System.out.println("Agencia Turistica: " + this.getAgencia());
 	}
+
 }

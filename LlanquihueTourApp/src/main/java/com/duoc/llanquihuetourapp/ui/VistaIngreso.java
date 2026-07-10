@@ -1,89 +1,229 @@
 package com.duoc.llanquihuetourapp.ui;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
 import java.awt.Dimension;
-import javax.swing.BorderFactory;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.duoc.llanquihuetourapp.data.GestorEntidades;
 
 public class VistaIngreso {
 
-	JFrame ventana;
-	JFrame framePadre;
-	JTextField txtCampo1;
+	private JFrame ventana;
+	private JFrame framePadre;
+	private JTextField txtNombre;
+	private JTextField txtApellido;
+	private JTextField txtTelefono;
+	private JTextField txtDireccion;
+	private JTextField txtRut;
+	private JComboBox<String> tipoEntidad;
+	private GestorEntidades gestorEntidades;
+
+	// Guia
+	private JTextField txtAgencia;
+
+	// Colaborador
+	private JTextField txtEmpresa;
+	private JTextField txtGiro;
+
+	// Vehiculo
+	private JTextField txtMarca;
+	private JTextField txtModelo;
+	private JTextField txtPatente;
+	private JTextField txtColor;
+	private JTextField txtAnnio;
+	private JTextField txtKms;
+	private JTextField txtResponsable; // Nombre-Apellido
+	private JTextField txtRutResponsable; // Rut
 
 	public VistaIngreso(JFrame padre, GestorEntidades gestor, String titulo) {
 		this.framePadre = padre;
 		this.gestorEntidades = gestor;
-		ventana = new JFrame(titulo);
-		ventana.setSize(640,480);
-		ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		ventana.setLocationRelativeTo(null);
-		ventana.setLayout(new BoxLayout(ventana.getContentPane(), BoxLayout.PAGE_AXIS));
+		this.ventana = new JFrame(titulo);
+		this.ventana.setSize(640,480);
+		this.ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.ventana.setLocationRelativeTo(null);
+		this.ventana.setLayout(new BoxLayout(ventana.getContentPane(), BoxLayout.PAGE_AXIS));
+		this.ventana.setResizable(false);
+		ConfigurarComponentes();
+
+		// registro evento al cerrar esta ventana
+		this.ventana.addWindowListener(new WindowAdapter(){
+			@Override
+			public void windowClosing(WindowEvent e){
+				if( getVentanaPadre()!=null ){
+					getVentanaPadre().setVisible(true); // vuelve a mostrar ventana padre
+				}
+			}
+
+			@Override
+			public void windowClosed(WindowEvent e){
+				if( getVentanaPadre()!=null ){
+					getVentanaPadre().setVisible(true); // vuelve a mostrar ventana padre
+				}
+			}
+		});
+
+		this.ventana.setVisible(true);
 	}
 
-	private void ConfigComponents(){
+	public JFrame getVentanaPadre(){
+		return this.framePadre;
+	}
+
+	private void ConfigurarComponentes(){
 
 		// Panel para campos de texto
 		JPanel panelForm1 = new JPanel();
-		panelForm1.setLayout(new BoxLayout(panelForm1, BoxLayout.PAGE_AXIS));
-		panelForm1.setPreferredSize(new Dimension(640, 180));
+		panelForm1.setLayout(new GridLayout( 6, 2 , 10, 10));
+		panelForm1.setBorder(BorderFactory.createEmptyBorder(30, 20, 10, 20));
+		panelForm1.setPreferredSize(new Dimension(640, 200));
 
 		// Panel para los botones
 		JPanel panelButtons = new JPanel();
 		panelButtons.setLayout(new GridLayout(1, 1, 10, 10));
 		panelButtons.setBorder(BorderFactory.createEmptyBorder(15, 25, 15, 25));
 		panelButtons.setPreferredSize(new Dimension(640, 70));
-		
-		JPanel panelPadding = new JPanel(); // para ordenar espacio visual en formulario :P
-		panelPadding.setPreferredSize(new Dimension(640, 230));
 
-		// Cambia fuente y tamaño
-		txtPatente = new JTextField();
-		txtPatente.setFont(new Font("Monospaced", Font.PLAIN, 14));
-		txtKms     = new JTextField();
-		txtKms.setFont(new Font("Monospaced", Font.PLAIN, 14));
-		txtLts     = new JTextField();
-		txtLts.setFont(new Font("Monospaced", Font.PLAIN, 14));
+		// Panel al final del formulario para espaciar.
+		JPanel panelPadding = new JPanel();
+		panelPadding.setPreferredSize(new Dimension(640, 100));
 
-		JLabel lblPatente     = new JLabel("Patente:");
-		lblPatente.setSize( 60, 60);
-		JLabel lblKms     = new JLabel("Kilometros recorridos:");
-		lblKms.setSize( 60, 60);
-		JLabel lblLts     = new JLabel("Litros cargados:");
-		lblLts.setSize( 60, 60);
+		// Inicializa elementos del formulario para registrar Entidad
+		String opcionesCbx[] = { "Seleccionar tipo", "Guia Turistico", "Vehiculo", "Colaborador Externo"};
+		this.tipoEntidad = new JComboBox<>(opcionesCbx);
+		this.tipoEntidad.setFont(new Font("Monospaced", Font.PLAIN, 16));
 
-		JButton btnAgregar   = new JButton("Agregar");
-		JButton btnReset    = new JButton("Limpiar formulario");
-		JButton btnCancelar = new JButton("Cancelar/Cerrar");
-		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblNombre.setSize( 60, 60);
+		this.txtNombre = new JTextField();
+		this.txtNombre.setFont(new Font("Monospaced", Font.PLAIN, 16));
+
+		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblApellido.setSize( 60, 60);
+		this.txtApellido = new JTextField();
+		this.txtApellido.setFont(new Font("Monospaced", Font.PLAIN, 16));
+
+		JLabel lblTelefono = new JLabel("Teléfono:");
+		lblTelefono.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblTelefono.setSize( 60, 60);
+		this.txtTelefono = new JTextField();
+		this.txtTelefono.setFont(new Font("Monospaced", Font.PLAIN, 16));
+
+		JLabel lblDireccion = new JLabel("Dirección:");
+		lblDireccion.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblDireccion.setSize( 60, 60);
+		this.txtDireccion = new JTextField();
+		this.txtDireccion.setFont(new Font("Monospaced", Font.PLAIN, 16));
+
+		JLabel lblRut = new JLabel("Rut (ej: 10222333-4):");
+		lblRut.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblRut.setSize( 60, 60);
+		this.txtRut = new JTextField();
+		this.txtRut.setFont(new Font("Monospaced", Font.PLAIN, 16));
+
+		this.txtAgencia = new JTextField();
+		this.txtAgencia.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		this.txtAgencia.setVisible(false);
+
+		this.txtEmpresa = new JTextField();
+		this.txtEmpresa.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		this.txtEmpresa.setVisible(false);
+
+		this.txtGiro = new JTextField();
+		this.txtGiro.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		this.txtGiro.setVisible(false);
+
+		JLabel lblTipo = new JLabel("Tipo de registro:");
+		lblTipo.setSize( 60, 60);
+		lblTipo.setFont(new Font("Arial", Font.PLAIN, 18));
+
+
+
+
+
+		panelForm1.add(lblTipo);
+		panelForm1.add(this.tipoEntidad);
+		panelForm1.add(lblNombre);
+		panelForm1.add(this.txtNombre);
+		panelForm1.add(lblApellido);
+		panelForm1.add(this.txtApellido);
+		panelForm1.add(lblTelefono);
+		panelForm1.add(this.txtTelefono);
+		panelForm1.add(lblDireccion);
+		panelForm1.add(this.txtDireccion);
+		panelForm1.add(lblRut);
+		panelForm1.add(this.txtRut);
+		// campos especifico???
+
+		// Controles
+		///////////////////URL urlIcono = VistaIngreso.class.getResource("");
+		//////////////////ImageIcon icono = new ImageIcon(urlIcono);
+		//////////////////JButton btnRegistrar    = new JButton( "Guardar", icono);
+		JButton btnRegistrar    = new JButton("GUARDAR");
+		btnRegistrar.setFont(new Font("Arial", Font.BOLD, 16));
+		JButton btnReset    = new JButton("LIMPIAR");
+		btnReset.setFont(new Font("Arial", Font.PLAIN, 16));
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 16));
+
+
 		// eventos de botones
-		btnAgregar.addActionListener(e->GuardarConsumoBencina());
+		this.tipoEntidad.addActionListener( e->{
+			int selectedInt = (int) this.tipoEntidad.getSelectedIndex();
+			this.txtAgencia.setText("");
+			this.txtEmpresa.setText("");
+			this.txtGiro.setText("");
+			switch (selectedInt) {
+				case 1: // Guia Turistico
+					this.txtAgencia.setVisible(true);
+					this.txtEmpresa.setVisible(false);
+					this.txtGiro.setVisible(false);
+					break;
+				case 2: // Vehiculo
+					this.txtAgencia.setVisible(false);
+					this.txtEmpresa.setVisible(false);
+					this.txtGiro.setVisible(false);
+					break;
+				case 3: // Colaborador
+					this.txtAgencia.setVisible(false);
+					this.txtEmpresa.setVisible(true);
+					this.txtGiro.setVisible(true);
+					break;
+				default:
+					this.txtAgencia.setVisible(false);
+					this.txtEmpresa.setVisible(false);
+					this.txtGiro.setVisible(false);
+			}
+		});
+		btnRegistrar.addActionListener(e->GuardarRegistro());
 		btnReset.addActionListener(e->ResetFormulario());
 		btnCancelar.addActionListener(e->CancelarFormulario());
 
-		panelForm1.add(lblPatente);
-		panelForm1.add(txtPatente);
-		panelForm1.add(lblKms);
-		panelForm1.add(txtKms);
-		panelForm1.add(lblLts);
-		panelForm1.add(txtLts);
-		
-		panelButtons.add(btnAgregar);
+		panelButtons.add(btnRegistrar);
 		panelButtons.add(btnReset);
 		panelButtons.add(btnCancelar);
 
 		ventana.add(panelForm1);
 		ventana.add(panelButtons);
 		ventana.add(panelPadding);
+
 	}
 
 	private boolean validarFormulario(String str_patente, String str_kms, String str_lts){
+		/*
 		if( str_patente.isEmpty() ){
 			JOptionPane.showMessageDialog( ventana, "El campo 'Patente' no puede estar vacío.", "Valor invalido", JOptionPane.ERROR_MESSAGE);
 			return false;
@@ -116,9 +256,15 @@ public class VistaIngreso {
 			return false;
 		}
 		return true;
+		*/
+		return false;
 	}
 
-	private void GuardarConsumoBencina(){
+	private void GuardarRegistro(){
+		// AQUI USAR GESTOR DE ENTIDADES
+		//Registrable entidad = new tipo-segun-seleccion();
+		this.gestorEntidades.agregarEntidad(null);
+		/*
 		try {
 			if( validarFormulario( txtPatente.getText().trim(), txtKms.getText().trim(), txtLts.getText().trim() )){
 				// Crea objeto
@@ -136,17 +282,21 @@ public class VistaIngreso {
 		} catch(Exception e){
 			JOptionPane.showMessageDialog( ventana, "Ocurrió un error al guardar la compra: " + e.getMessage(), "Error inesperado", JOptionPane.ERROR_MESSAGE);
 		}
+		*/
 	}
 	
 	private void ResetFormulario(){
-		txtPatente.setText("");
-		txtKms.setText("");
-		txtLts.setText("");
-		txtPatente.requestFocusInWindow();
+		//tipoEntidad.setText("");
+		this.txtNombre.setText("");
+		this.txtApellido.setText("");
+		this.txtTelefono.setText("");
+		this.txtDireccion.setText("");
+		this.txtRut.setText("");
+		this.txtNombre.requestFocusInWindow();
 	}
 
 	private void CancelarFormulario(){
-		ventana.dispose();
+		this.ventana.dispose();
 	}
 
 
