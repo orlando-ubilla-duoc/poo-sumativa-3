@@ -29,6 +29,8 @@ El proyecto fue desarrollado a partir de un caso contextualizado, abordando prob
 
 ## ⚙️ Instrucciones para clonar y ejecutar el proyecto
 
+Desde la linea de comandos, sigue los siguientes pasos:
+
 1. Clona el repositorio desde GitHub:
 
     ```bash
