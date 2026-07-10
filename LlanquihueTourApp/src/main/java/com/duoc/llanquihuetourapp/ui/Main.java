@@ -1,12 +1,14 @@
 package com.duoc.llanquihuetourapp.ui;
 
-import com.duoc.llanquihuetourapp.data.GestorServicios;
+import javax.swing.SwingUtilities;
 
+import com.duoc.llanquihuetourapp.data.GestorEntidades;
 
 public class Main {
 
 	public static void main(String[] args) {
 
+		/*
 		GestorServicios gestor = new GestorServicios();
 
 		gestor.crearExcursionCultural("Tour Cultural", 2, "Santiago", 60000, "Plaza de Armas");
@@ -17,6 +19,14 @@ public class Main {
 		gestor.crearRutaGastronomica("Ruta de Sabores", 5, "Puerto Montt", 110000, 3);
 
 		gestor.muestraServicios();
+		*/
+
+		// Para manejar de forma global los datos del programa, transversal entre pantallas, sin tener que persistir los datos en disco o medio externo.
+		GestorEntidades gestorEntidades = new GestorEntidades();
+
+		SwingUtilities.invokeLater(() -> {
+			VistaMenu sumativa3 = new VistaMenu();
+		});
 
 	}
 
