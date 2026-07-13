@@ -20,8 +20,8 @@ El proyecto fue desarrollado a partir de un caso contextualizado, abordando prob
 
 ```plaintext
 📁 src/
-├── ui/           # Clase principal con el método main
-├── model/        # Clases de dominio ( ServicioTuristico, RutaGastronomica, PaseoLacustre, ExcursionCultural)
+├── ui/           # Clase principal con el método main y las vistas de pantallas.
+├── model/        # Clases de dominio ( Persona, ColaboradorExterno, GuiaTuristico, Vehiculo, interfaces, etc).
 └── data/         # Clase manejadora de Objetos de subclases, con manejo de listado interno.
 ```
 
