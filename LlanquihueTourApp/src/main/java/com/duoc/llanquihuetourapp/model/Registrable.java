@@ -7,6 +7,6 @@ package com.duoc.llanquihuetourapp.model;
  */
 public interface Registrable {
 
-	public void mostrarResumen();
+	public String mostrarResumen();
 
 }

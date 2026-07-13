@@ -10,9 +10,10 @@ public class ColaboradorExterno extends Persona implements Registrable {
 	private String nombreEmpresa;
 	private String giroComercial;
 
-	public ColaboradorExterno(String nombre, String email, String telefono, String direccion, Rut rut, String empresa) {
+	public ColaboradorExterno(String nombre, String email, String telefono, String direccion, Rut rut, String empresa, String giro) {
 		super(nombre, email, telefono, direccion, rut);
 		this.nombreEmpresa = empresa;
+		this.giroComercial = giro;
 	}
 
 	public String getEmpresa() { return this.nombreEmpresa;}
@@ -24,9 +25,11 @@ public class ColaboradorExterno extends Persona implements Registrable {
 	public void setGiro(String giro) { this.giroComercial = giro;}
 
 	@Override
-	public void mostrarResumen() {
-		System.out.println("=== INFORMACIÓN DEL COLABORADOR EXTERNO ===");
-		System.out.println("Empresa: " + this.getEmpresa());
-		System.out.println("Giro Comercial: " + this.getGiro());
+	public String mostrarResumen() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.toString());
+		sb.append("Empresa: ").append(this.getEmpresa()).append("\n");
+		sb.append("Giro Comercial: ").append(this.getGiro()).append("\n");
+		return sb.toString();
 	}
 }

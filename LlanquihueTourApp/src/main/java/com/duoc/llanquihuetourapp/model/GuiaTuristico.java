@@ -19,9 +19,11 @@ public class GuiaTuristico extends Persona implements Registrable {
 	public void setAgencia(String dato) { this.nombreAgencia = dato;}
 
 	@Override
-	public void mostrarResumen() {
-		System.out.println("=== INFORMACIÓN DEL GUÍA TURÍSTICO ===");
-		System.out.println("Agencia Turistica: " + this.getAgencia());
+	public String mostrarResumen() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.toString());
+		sb.append("Agencia Turistica: ").append(this.getAgencia()).append("\n");
+		return sb.toString();
 	}
 
 }

@@ -33,6 +33,11 @@ public class Rut {
 		}
 	}
 
+	public Rut() {
+		this.rut = "";
+		this.dv = "";
+	}
+
 	/**
 	 * Devuelve el RUT completo (sin puntos, con guion y dígito verificador).
 	 * @return El RUT completo (ejemplo:"12345678-K")

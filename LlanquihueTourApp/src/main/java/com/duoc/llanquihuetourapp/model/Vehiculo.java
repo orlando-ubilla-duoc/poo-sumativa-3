@@ -13,9 +13,19 @@ public class Vehiculo implements Registrable {
 	private String color;
 	private int annio;
 	private int kilometros;
-	private Persona responsable;
+	private Conductor responsable;
 
-	public Vehiculo(String marca, String modelo, String patente, String color, int annio, int km, Persona reponsable) {
+	public Vehiculo(){
+		this.marca   = "";
+		this.modelo  = "";
+		this.patente = "";
+		this.color   = "";
+		this.annio   = 0;
+		this.kilometros = 0;
+		this.responsable = null;
+	}
+
+	public Vehiculo(String marca, String modelo, String patente, String color, int annio, int km, Conductor reponsable) {
 		this.marca   = marca;
 		this.modelo  = modelo;
 		this.patente = patente;
@@ -43,19 +53,21 @@ public class Vehiculo implements Registrable {
 	public int getKms() { return this.kilometros;}
 	public void setKms(int k) { this.kilometros = k;}
 
-	public Persona getResponsable() { return this.responsable;}
-	public void setResponsable(Persona r) { this.responsable = r;}
+	public Conductor getResponsable() { return this.responsable;}
+	public void setResponsable(Conductor r) { this.responsable = r;}
 
 
 	@Override
-	public void mostrarResumen() {
-		System.out.println("=== INFORMACIÓN DEL VEHÍCULO ===");
-		System.out.println("Marca: " + this.getMarca());
-		System.out.println("Modelo: " + this.getModelo());
-		System.out.println("Patente: " + this.getPatente());
-		System.out.println("Color: " + this.getColor());
-		System.out.println("Año: " + this.getAnnio());
-		System.out.println("Kilometraje: " + this.getKms());
-		System.out.println("Persona responsable: " + this.getResponsable().getNombre() + "(RUT:"+this.getResponsable().getRut().getRut()+")");
+	public String mostrarResumen() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Marca: ").append(this.getMarca()).append("\n");
+		sb.append("Modelo: ").append(this.getModelo()).append("\n");
+		sb.append("Patente: ").append(this.getPatente()).append("\n");
+		sb.append("Color: ").append(this.getColor()).append("\n");
+		sb.append("Año: ").append(this.getAnnio()).append("\n");
+		sb.append("Kilometraje: ").append(this.getKms()).append("Kms \n");
+		sb.append("Persona responsable: ").append(this.getResponsable().getNombre()).append("(RUT:").append(this.getResponsable().getRut().getRut()).append(") \n");
+
+		return sb.toString();
 	}
 }

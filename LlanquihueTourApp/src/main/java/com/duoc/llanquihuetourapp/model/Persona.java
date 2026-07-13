@@ -45,4 +45,15 @@ public abstract class Persona {
 
 	public void setRut(Rut rut) { this.rut = rut;}
 
+	public String toString() {
+		return "["+this.getClass().getSimpleName() + "] : " +
+			"nombre=" + this.getNombre() + ", \n" +
+			"email=" + this.getEmail() + ", \n" +
+			"telefono=" + this.getTelefono() + ", \n" +
+			"direccion=" + this.getDireccion() + ", \n" +
+			"ciudad=" + this.getCiudad() + ", \n" +
+			"rut=" + this.getRut().getRut() + ", \n"
+		;
+	}
+
 }
