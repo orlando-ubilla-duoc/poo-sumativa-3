@@ -11,7 +11,11 @@ import javax.swing.JTextArea;
 
 import com.duoc.llanquihuetourapp.data.GestorEntidades;
 
-
+/**
+ * Clase que representa la ventana de resumen de datos, mostrando la información de todas las entidades registradas.
+ * @author	Orlando Ubilla
+ * @since	Sumativa-3
+ */
 public class VistaResumen {
 
 	private JFrame ventana;
@@ -33,15 +37,9 @@ public class VistaResumen {
 		JPanel panelResumen = new JPanel();
 		panelResumen.setSize( 640-2, 480-52);
 		panelResumen.setLayout(new FlowLayout(FlowLayout.CENTER));
-		/*
-		JPanel panel2 = new JPanel();
-		panel2.setSize( FRAME_WDT-2, FRAME_HGT-52);
-		panel2.setLayout(new FlowLayout(FlowLayout.CENTER));
-		*/
 
 		this.areaSalida = new JTextArea( 24, 76);
 		this.areaSalida.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		//this.areaSalida.setBounds(10, 10, 580, 380);
 		this.areaSalida.setEditable(false);
 		this.areaSalida.setLayout(null);
 		this.areaSalida.setEditable(false);

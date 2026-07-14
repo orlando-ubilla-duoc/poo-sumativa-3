@@ -1,7 +1,7 @@
 package com.duoc.llanquihuetourapp.model;
 
 /**
- *
+ * Clase que representa un RUT (Rol Único Tributario) chileno, con validación de formato y dígito verificador.
  * @author	Orlando Ubilla
  * @since	Sumativa-3
  */

@@ -16,6 +16,11 @@ import javax.swing.JPanel;
 
 import com.duoc.llanquihuetourapp.data.GestorEntidades;
 
+/**
+ * Clase que representa la ventana de ingreso de datos, con formulario dinámico según tipo de registro.
+ * @author	Orlando Ubilla
+ * @since	Sumativa-3
+ */
 public class VistaIngreso {
 
 	private JFrame ventana;

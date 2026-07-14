@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import com.duoc.llanquihuetourapp.data.GestorEntidades;
 
 /**
- *
+ * Clase que representa la ventana principal del sistema, con el menú de opciones.
  * @author	Orlando Ubilla
  * @since	Sumativa-3
  */

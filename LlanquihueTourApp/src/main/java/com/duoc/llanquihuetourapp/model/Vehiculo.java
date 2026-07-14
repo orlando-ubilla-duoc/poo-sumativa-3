@@ -1,7 +1,8 @@
 package com.duoc.llanquihuetourapp.model;
 
 /**
- *
+ * Clase que representa un vehículo, con atributos como marca, modelo, patente, color, año, kilometraje y un conductor responsable.
+ * Implementa la interfaz Registrable para permitir mostrar un resumen de la información del vehículo.
  * @author	Orlando Ubilla
  * @since	Sumativa-3
  */

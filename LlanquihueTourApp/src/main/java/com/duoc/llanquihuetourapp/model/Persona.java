@@ -1,7 +1,8 @@
 package com.duoc.llanquihuetourapp.model;
 
 /**
- *
+ * Clase abstracta Persona, que representa a una persona con atributos comunes como nombre, email, teléfono, dirección, ciudad y RUT.
+ * Esta clase sirve como base para otras clases que representen tipos específicos de personas.
  * @author	Orlando Ubilla
  * @since	Sumativa-3
  */
@@ -13,6 +14,14 @@ public abstract class Persona {
 	private String ciudad;
 	private Rut rut;
 
+	/**
+	 * Constructor de la clase Persona.
+	 * @param nombre El nombre completo de la persona.
+	 * @param email El correo electrónico de la persona.
+	 * @param telefono El número de teléfono de la persona.
+	 * @param direccion La dirección de la persona.
+	 * @param rut El RUT de la persona.
+	 */
 	public Persona(String nombre, String email, String telefono, String direccion, Rut rut) {
 		this.nombreCompleto = nombre;
 		this.email = email;

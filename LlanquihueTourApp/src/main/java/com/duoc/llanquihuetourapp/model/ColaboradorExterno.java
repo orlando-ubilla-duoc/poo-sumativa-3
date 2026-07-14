@@ -1,7 +1,8 @@
 package com.duoc.llanquihuetourapp.model;
 
 /**
- *
+ * Clase que representa a un colaborador externo, que hereda de la clase Persona y implementa la interfaz Registrable.
+ * Contiene información adicional sobre la empresa y el giro comercial del colaborador externo.
  * @author	Orlando Ubilla
  * @since	Sumativa-3
  */
